@@ -12,11 +12,11 @@ static vector<int> sexp2vec(SEXP sexp) {
 }
 
 extern "C" {
-  SEXP stringsim(SEXP a, SEXP b, SEXP scoring_vec) {
+  SEXP c_stringsim(SEXP a, SEXP b, SEXP scoring_vec) {
     const int *sv = INTEGER(scoring_vec);
-    const Scoring scoring = { sv[0], sv[1], sv[2], sv[3] };
+    const stringsim::Scoring scoring = { sv[0], sv[1], sv[2], sv[3] };
     SEXP result = allocVector(INTSXP, 1);
-    INTEGER(result)[0] = similarity(scoring, sexp2vec(a), sexp2vec(b));
+    INTEGER(result)[0] = stringsim::similarity(scoring, sexp2vec(a), sexp2vec(b));
     return result;
   }
 }
