@@ -1,0 +1,3 @@
+[submodule "src/stringsim"]
+	path = src/stringsim
+	url = git@github.com:feuerbach/stringsim.git
